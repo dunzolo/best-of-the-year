@@ -10,7 +10,9 @@
 	<div class="container mt-5">
 		<div class="row border border-dark">
 			<div class="col-3 d-flex align-items-center border-end border-dark p-3">
-				<h3 class="p-0">Best of</h3>
+				<a th:href="@{/}" class="btn btn-outline-dark me-3">
+					Home
+				</a>
 			</div>
 			<div class="col-9 d-flex align-items-center p-3">
 				<div th:replace="frag/item-list :: movies"></div>
@@ -19,8 +21,12 @@
 		</div>
 		<div class="row border border-dark pt-5 pb-5">
 			<div class="col text-center">
-				<h1 th:text = "'Best of by ' + ${name} + '!'" ></h1>
-				<img class="image" th:src="@{/img/image.jpg}" />
+				<h1>Best Movies</h1>
+				<ul class="list-unstyled">
+					<li th:each="movie : ${movies}" th:object="${movie}">
+						<a th:href="@{/movies/{id} (id=${movie.id})}" class="btn btn-outline-dark px-5 py-2">[[ *{titolo} ]]</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>

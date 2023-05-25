@@ -6,21 +6,28 @@
 <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}"/>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body>
+<body th:object="${song}">
 	<div class="container mt-5">
 		<div class="row border border-dark">
 			<div class="col-3 d-flex align-items-center border-end border-dark p-3">
-				<h3 class="p-0">Best of</h3>
+				<a th:href="@{/}" class="btn btn-outline-dark me-3">
+					Home
+				</a>
 			</div>
 			<div class="col-9 d-flex align-items-center p-3">
-				<div th:replace="frag/item-list :: movies"></div>
-				<div th:replace="frag/item-list :: songs"></div>
+				<a th:href="@{/movies}" class="btn btn-outline-dark me-3">
+					Movies
+				</a>
+				<a th:href="@{/songs}" class="btn btn-outline-dark">
+					Songs
+				</a>
 			</div>
 		</div>
-		<div class="row border border-dark pt-5 pb-5">
-			<div class="col text-center">
-				<h1 th:text = "'Best of by ' + ${name} + '!'" ></h1>
-				<img class="image" th:src="@{/img/image.jpg}" />
+		<div class="row">
+			<div class="col">
+				<h1 class="text-center">
+					[[ *{titolo} ]]
+				</h1>
 			</div>
 		</div>
 	</div>
