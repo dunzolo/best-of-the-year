@@ -8,17 +8,7 @@
 </head>
 <body>
 	<div class="container mt-5">
-		<div class="row border border-dark">
-			<div class="col-3 d-flex align-items-center border-end border-dark p-3">
-				<a th:href="@{/}" class="btn btn-outline-dark me-3">
-					Home
-				</a>
-			</div>
-			<div class="col-9 d-flex align-items-center p-3">
-				<div th:replace="frag/item-list :: movies"></div>
-				<div th:replace="frag/item-list :: songs"></div>
-			</div>
-		</div>
+		<div class="row border border-dark" th:insert="frag/header :: items"></div>
 		<div class="row border border-dark pt-5 pb-5">
 			<div class="col text-center">
 				<h1>Best Songs</h1>
