@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div th:fragment="items" class="d-flex">
+	<div th:fragment="items" class="row border border-dark" >
 		<div class="col-3 d-flex align-items-center border-end border-dark p-3">
 			<a th:href="@{/}" class="btn btn-outline-dark me-3">
 				Home
@@ -16,7 +16,7 @@
 			<div th:replace="frag/item-list :: songs"></div>
 		</div>	
 	</div>
-	<div th:fragment="index" class="d-flex">
+	<div th:fragment="index" class="row border border-dark">
 		<div class="col-3 d-flex align-items-center border-end border-dark p-3">
 			<h3 class="p-0">Best of</h3>
 		</div>

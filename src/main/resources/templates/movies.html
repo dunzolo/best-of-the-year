@@ -8,13 +8,16 @@
 </head>
 <body>
 	<div class="container mt-5">
-		<div class="row border border-dark" th:insert="frag/header :: items"></div>
+		<div th:replace="frag/header :: items"></div>
 		<div class="row border border-dark pt-5 pb-5">
 			<div class="col text-center">
 				<h1>Best Movies</h1>
 				<ul class="list-unstyled">
 					<li th:each="movie : ${movies}" th:object="${movie}">
-						<a th:href="@{/movies/{id} (id=${movie.id})}" class="btn btn-outline-dark px-5 py-2">[[ *{titolo} ]]</a>
+						<a th:href="@{/movies/{id} (id=${movie.id})}" 
+							class="btn btn-outline-dark px-5 py-2">
+							[[ *{titolo} ]]
+						</a>
 					</li>
 				</ul>
 			</div>

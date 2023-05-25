@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="container mt-5">
-		<div class="row border border-dark" th:insert="frag/header :: index"></div>
+		<div th:replace="frag/header :: index"></div>
 		<div class="row border border-dark pt-5 pb-5">
 			<div class="col text-center">
 				<h1 th:text = "'Best of by ' + ${name} + '!'" ></h1>
