@@ -1,6 +1,7 @@
 package org.lesson.java.proj.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.lesson.java.obj.Movie;
@@ -26,8 +27,15 @@ public class MainController {
 	public String getMoviesList(Model model) {
 		String movie_list = "";
 		
-		for(Movie movie : getBestMovies()) {
-			movie_list += movie.getTitolo() + ", ";
+		//for(Movie movie : getBestMovies()) {
+		//	movie_list += movie.getTitolo() + ", ";
+		//}
+		//movie_list = movie_list.substring(0, movie_list.length() - 1);
+		
+		Iterator<Movie> it = getBestMovies().iterator();
+		while(it.hasNext()) {
+			movie_list += it.next().getTitolo();
+			if(it.hasNext()) movie_list += ", ";
 		}
 		
 		model.addAttribute("name", movie_list);
@@ -39,13 +47,15 @@ public class MainController {
 	public String getMovieId(Model model,
 			@PathVariable("id") int id) {
 		
-		String movie_id = "";
+		String movie_id = null;
 		for( Movie movie : getBestMovies()) {
 			if(movie.getId() == id) {				
 				movie_id = movie.getTitolo(); 
 			}
 		}
-		model.addAttribute("name", movie_id);
+		
+		if(movie_id != null) model.addAttribute("name", movie_id);
+		else model.addAttribute("name", "movie not found");
 		
 		return "index";
 	}
@@ -54,8 +64,10 @@ public class MainController {
 	public String getSongsList(Model model) {
 		String song_list = "";
 		
-		for(Song song : getBestSong()) {
-			song_list += song.getTitolo() + ", ";
+		Iterator<Song> it = getBestSong().iterator();
+		while(it.hasNext()) {
+			song_list += it.next().getTitolo();
+			if(it.hasNext()) song_list += ", ";
 		}
 		
 		model.addAttribute("name", song_list);
@@ -67,13 +79,16 @@ public class MainController {
 	public String getSongId(Model model,
 			@PathVariable("id") int id) {
 		
-		String song_id = "";
+		String song_id = null;
 		for( Song song : getBestSong()) {
 			if(song.getId() == id) {				
 				song_id = song.getTitolo(); 
 			}
 		}
-		model.addAttribute("name", song_id);
+		
+		if(song_id != null) model.addAttribute("name", song_id);
+		else model.addAttribute("name", "song not found");
+		
 		
 		return "index";
 	}
